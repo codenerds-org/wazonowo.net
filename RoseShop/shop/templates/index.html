@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<script>
+const loadModal = () => {
+    const queryString = window.location.search;
+    console.log(queryString);
+
+    const urlParams = new URLSearchParams(queryString);
+    if (urlParams.has('success')) {
+        const success = urlParams.get('success')
+        if (success=="true") {
+            var myModal = new bootstrap.Modal(document.getElementById('successModal'))
+            myModal.show()
+        }
+    }
+}
+window.onload = loadModal
+
+</script>
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Udało się!</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Dziękujemy za złożenie zamówienia! Wszystkie informacje odnośnie wysyłki zostały wysłanie na
+                    maila.</p>
+                <p>W razie pytań prosimy o kontakt na <a
+                        href="mailto:mailto:kontakt@wazonowo.net">kontakt@wazonowo.net</a>.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="header-blue">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container"><a class="navbar-brand" href="#">Wazonowo.net</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Włącz nawigacje</span><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                     id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#oferta">Oferta</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#kontakt">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container hero">
+            <div class="row">
+                <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+                    <h1>Rewolucja nadeszła...</h1>
+                    <p>Najlepsze wazony w okolicy, już teraz mogą zagościć w Twoim domu! </p><a href="#onas">
+                    <button class="btn btn-light btn-lg action-button" type="button">Dowiedz się więcej</button>
+                </a></div>
+                <div class="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">
+                    <div class="iphone-mockup"><img src="../static/images/image.png" class="device">
+                        <div class="screen"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="heading" id="onas">
+    <h2><span>O nas</span></h2>
+    <div class="devider"></div>
+    <div class="row1-container" style="padding-bottom: 50px;">
+        <div class="box box-down cyan">
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+        </div>
+
+        <div class="box blue">
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+        </div>
+
+        <div class="box box-down blue">
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+        </div>
+    </div>
+    <div class="ofert" id="oferta">
+        <h2><span>Oferta</span></h2>
+        <div class="devider"></div>
+        <div class="row1-container"></div>
+
+        {% for item in items %}
+
+        <div class="wrapper">
+            <img src="{{ item.image_one.url }}"
+                 alt="" style="width: 100%; height: 100%; object-fit: contain;"/>
+            <a href="/item/{{ item.id }}">
+                <button class="button-28" role="button">Sprawdź!</button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
