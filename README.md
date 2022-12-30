@@ -1,16 +1,16 @@
-# Shop
-RoseShop is template for super easy creating shop's with Django.
+# wazonowo.net
+wazonowo.net is template for e-commerce site, made with Django.
 
 ![img_3.png](img_3.png)
 
 ## Setup
 First, you need to clone this repository
 
-`$ git clone https://github.com/th11n/RoseShop`
+`$ git clone https://github.com/Style77/wazonowo.net`
 
 and change directory
 
-`cd RoseShop/RoseShop`
+`cd wazonowo.net/RoseShop`
 
 after cloning, you need to install all required packages using command `$ pip install -r requirements.txt`, renaming `.env.SAMPLE` to `.env` and filling all config variables <small>`(Stripe variables are detailed in next paragraph)`</small>.\
 Then you have to migrate database using commands:
